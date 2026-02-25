@@ -1,0 +1,108 @@
+<div class="min-h-screen bg-gray-50">
+  <!-- Header -->
+  <header class="bg-white shadow-sm border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-3xl font-semibold text-gray-900">Viajes Premier</h1>
+          <p class="mt-1 text-sm text-gray-500">Panel de Análisis de Clientes Instagram</p>
+        </div>
+        <div class="flex items-center space-x-4">
+          <div class="text-right">
+            <p class="text-sm font-medium text-gray-900">Total Clientes</p>
+            <p class="text-2xl font-bold text-apple-blue-600">{{ estadisticas?.customers?.total_customers || 0 }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Loading State -->
+  @if (loading) {
+    <div class="flex items-center justify-center h-64">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-apple-blue-600"></div>
+    </div>
+  }
+
+  <!-- Main Content -->
+  @if (!loading && estadisticas) {
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Quick Stats Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="card-apple">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-500">Reservados</p>
+              <p class="mt-2 text-3xl font-semibold text-green-600">
+                {{ estadisticas.customers.status_booked || 0 }}
+              </p>
+            </div>
+            <div class="bg-green-100 rounded-full p-3">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-apple">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-500">Interesados</p>
+              <p class="mt-2 text-3xl font-semibold text-apple-blue-600">
+                {{ estadisticas.customers.status_interested || 0 }}
+              </p>
+            </div>
+            <div class="bg-blue-100 rounded-full p-3">
+              <svg class="w-6 h-6 text-apple-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-apple">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-500">Listos para Reservar</p>
+              <p class="mt-2 text-3xl font-semibold text-orange-600">
+                {{ estadisticas.customers.status_ready_to_book || 0 }}
+              </p>
+            </div>
+            <div class="bg-orange-100 rounded-full p-3">
+              <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-apple">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-500">Promedio Viajeros</p>
+              <p class="mt-2 text-3xl font-semibold text-purple-600">
+                {{ estadisticas.inquiries.avg_travelers || 0 }}
+              </p>
+            </div>
+            <div class="bg-purple-100 rounded-full p-3">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytics Section -->
+      <div class="mb-8">
+        <app-analytics [estadisticas]="estadisticas"></app-analytics>
+      </div>
+
+      <!-- Clients List Section -->
+      <div>
+        <app-clients-list></app-clients-list>
+      </div>
+    </div>
+  }
+</div>

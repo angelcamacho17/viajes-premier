@@ -1,0 +1,44 @@
+<div class="space-y-6">
+  <h2 class="text-2xl font-semibold text-gray-900 mb-6">Análisis de Tendencias</h2>
+
+  <!-- Grid de gráficas -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Gráfica de Destinos Más Consultados -->
+    <div class="card-apple">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Destinos Más Consultados</h3>
+      <div class="h-80">
+        <canvas baseChart
+          [data]="destinosChartData"
+          [options]="destinosChartOptions"
+          type="bar">
+        </canvas>
+      </div>
+    </div>
+
+    <!-- Gráfica de Tipos de Consulta -->
+    <div class="card-apple">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Tipos de Consulta</h3>
+      <div class="h-80">
+        <canvas baseChart
+          [data]="objecionesChartData"
+          [options]="objecionesChartOptions"
+          type="doughnut">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gráfica de Clasificación de Clientes -->
+  <div class="card-apple">
+    <h3 class="text-lg font-semibold text-gray-900 mb-4">Clasificación de Clientes</h3>
+    <div class="h-80 flex items-center justify-center">
+      <div class="w-full max-w-md">
+        <canvas baseChart
+          [data]="clasificadoresChartData"
+          [options]="clasificadoresChartOptions"
+          type="pie">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>

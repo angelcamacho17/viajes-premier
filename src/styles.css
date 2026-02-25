@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apple-inspired global styles */
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .card-apple {
+    @apply bg-white rounded-apple shadow-apple p-6 hover:shadow-apple-lg transition-shadow duration-300;
+  }
+
+  .btn-apple-primary {
+    @apply bg-apple-blue-600 text-white px-6 py-3 rounded-apple font-medium hover:bg-apple-blue-700 transition-colors duration-200 shadow-apple;
+  }
+
+  .btn-apple-secondary {
+    @apply bg-gray-100 text-gray-900 px-6 py-3 rounded-apple font-medium hover:bg-gray-200 transition-colors duration-200;
+  }
+}
